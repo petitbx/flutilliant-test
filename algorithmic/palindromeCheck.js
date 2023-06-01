@@ -36,5 +36,5 @@ function hasMoreThanOneOddCharInObject(objectNumber) {
     return odds > 1;
 }
 
-// To run test, you just have to call the function smallerPrimes like :
+// To run test, you just have to call the function palindromeCheck like :
 //palindromeCheck("ressasser");

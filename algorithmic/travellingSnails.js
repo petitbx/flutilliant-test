@@ -59,5 +59,5 @@ function isSnailArrived(snailHeight) {
     return snailHeight <= 0;
 }
 
-// To run test, you just have to call the function smallerPrimes like :
+// To run test, you just have to call the function travellingSnails like :
 // travellingSnails(7, [10,5,8,3,25,7,9], [2,3,2,4,5,3,2], [1,2,1,3,1,2,0]);
