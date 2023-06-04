@@ -13,7 +13,7 @@ const verifyToken = async (req, res, next) => {
     }
     req.token = token;
     req.user = user;
-    next();
+    return next();
 }
 
 module.exports = verifyToken;
