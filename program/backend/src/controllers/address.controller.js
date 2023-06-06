@@ -29,7 +29,13 @@ const updateAddress = async (req, res) => {
     res.json({ address: addressUpdated });
 }
 
+const getAddresses = async (req, res) => {
+    let addresses = await addressService.getAllAdresses();
+    res.json({address: addresses});
+}
+
 module.exports = {
     createAddress,
-    updateAddress
+    updateAddress,
+    getAddresses
 };

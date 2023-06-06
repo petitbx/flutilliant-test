@@ -20,8 +20,13 @@ const createAddress = async (params) => {
     return newAddress;
 }
 
+const getAllAdresses = async () => {
+    return Address.find();
+}
+
 module.exports = {
     getAddressById,
     updateAddressWithParams,
     createAddress,
+    getAllAdresses
 }

@@ -12,11 +12,24 @@ mongoose.Promise = global.Promise;
 const publicRoutes = require('./src/routes/public/auth.route')
 const bodyParser = require("body-parser");
 
+const cors = require('cors');
+
 const app = express();
 
 app.use(bodyParser.json({ extended: true }));
 app.use('/', publicRoutes);
-
+const whitelist = ["http://localhost:8081"]
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error("Not allowed by CORS"))
+        }
+    },
+    credentials: true,
+}
+app.use(cors(corsOptions))
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.json({error: err});
@@ -25,3 +38,4 @@ app.use(function(err, req, res, next) {
 app.listen(3000, () => {
     console.log('Server started.')
 })
+
