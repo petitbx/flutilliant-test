@@ -1,10 +1,10 @@
-import React, { useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getAddress, updateAddress} from "../../actions/address";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import { newAddress } from '../../actions/address';
 
 const required = (value) => {
     if (!value) {
@@ -15,7 +15,8 @@ const required = (value) => {
         );
     }
 };
-const NewAddress = () => {
+const UpdateAddress = () => {
+    const { id } = useParams();
     let navigate = useNavigate();
     const [address, setAddress] = useState();
     const [city, setCity] = useState();
@@ -24,6 +25,20 @@ const NewAddress = () => {
     const form = useRef();
     const checkBtn = useRef();
     const dispatch = useDispatch();
+    const { addresses } = useSelector((state) => state.address);
+
+    useEffect(() => {
+        dispatch(getAddress(id)).then(() => {
+            let addressToUpdate = addresses.find(obj => {
+                return obj._id === id;
+            })
+            if (addressToUpdate) {
+                setAddress(addressToUpdate.address);
+                setCity(addressToUpdate.city);
+                setPostalCode(addressToUpdate.postalCode);
+            }
+        });
+    }, [id]);
 
     const onChangeAddress = (e) => {
         setAddress(e.target.value);
@@ -41,7 +56,7 @@ const NewAddress = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            dispatch(newAddress(address, postalCode, city))
+            dispatch(updateAddress(id, address, postalCode, city))
                 .then(() => {
                     navigate("/");
                     // window.location.reload();
@@ -53,7 +68,6 @@ const NewAddress = () => {
             setLoading(false);
         }
     }
-
     return (
         <div className="container">
             <Form onSubmit={handleAddress} ref={form}>
@@ -96,7 +110,7 @@ const NewAddress = () => {
                         {loading && (
                             <span className="spinner-border spinner-border-sm"></span>
                         )}
-                        <span>Create Address</span>
+                        <span>Update Address</span>
                     </button>
                 </div>
 
@@ -107,4 +121,4 @@ const NewAddress = () => {
     );
 }
 
-export default NewAddress;
+export default UpdateAddress;

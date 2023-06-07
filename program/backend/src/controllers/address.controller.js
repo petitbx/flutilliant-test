@@ -34,8 +34,14 @@ const getAddresses = async (req, res) => {
     res.json({address: addresses});
 }
 
+const getAddress = async (req, res) => {
+    let address = await addressService.getAddressById(req.params.id);
+    res.json({address: address});
+}
+
 module.exports = {
     createAddress,
     updateAddress,
-    getAddresses
+    getAddresses,
+    getAddress
 };

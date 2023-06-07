@@ -15,7 +15,7 @@ const required = (value) => {
         );
     }
 };
-const NewAddress = () => {
+const NewContact = () => {
     let navigate = useNavigate();
     const [address, setAddress] = useState();
     const [city, setCity] = useState();
@@ -107,4 +107,4 @@ const NewAddress = () => {
     );
 }
 
-export default NewAddress;
+export default NewContact;

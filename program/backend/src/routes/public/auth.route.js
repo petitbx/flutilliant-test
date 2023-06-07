@@ -10,6 +10,7 @@ router.post('/login', validate(authValidator.login), authController.login);
 router.post('/address', [verifyToken, validate(addressValidator.addressBody)], addressController.createAddress)
 router.put('/address/:id', [verifyToken, validate(addressValidator.addressBody)], addressController.updateAddress)
 router.get('/address', [verifyToken], addressController.getAddresses);
+router.get('/address/:id', [verifyToken], addressController.getAddress);
 router.post('/contact', [verifyToken, validate(contactValidator.contactBody)], contactController.createContact)
 router.put('/contact/:id', [verifyToken, validate(contactValidator.contactBody)], contactController.updateContact)
 router.post('/visit', [verifyToken, validate(visitValidator.visitBody)], visitController.createVisit);

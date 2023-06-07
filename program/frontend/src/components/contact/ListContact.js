@@ -3,7 +3,7 @@ import {getAllAddresses} from "../../actions/address";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
-const ListAddress = () => {
+const ListContact = () => {
     const dispatch = useDispatch();
     let navigate = useNavigate();
     const { addresses } = useSelector((state) => state.address);
@@ -70,4 +70,4 @@ const ListAddress = () => {
     )
 }
 
-export default ListAddress;
+export default ListContact;

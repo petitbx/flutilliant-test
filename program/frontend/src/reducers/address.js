@@ -1,6 +1,7 @@
 import {
+    GET_ADDRESS_SUCCESS,
     GET_ADDRESSES_SUCCESS,
-    NEW_ADDRESS_SUCCESS,
+    NEW_ADDRESS_SUCCESS, UPDATE_ADDRESS_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -18,6 +19,12 @@ export default function (state = initialState, action) {
             return {
                 addresses: [...payload.address]
             };
+        case UPDATE_ADDRESS_SUCCESS:
+        case GET_ADDRESS_SUCCESS:
+            let addresses = state.addresses.filter((address => address._id !== payload.address._id))
+            return {
+                addresses: [...addresses, payload.address]
+            }
         default:
             return state;
     }

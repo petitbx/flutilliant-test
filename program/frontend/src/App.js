@@ -1,6 +1,6 @@
-import React, {useEffect, useCallback, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Routes, Route, Link, useLocation, useNavigate} from "react-router-dom";
+import {Routes, Route, Link, useNavigate} from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -14,6 +14,8 @@ import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
 import NewAddress from "./components/addresses/NewAddress";
 import ListAddress from "./components/addresses/ListAddress";
+import UpdateAddress from "./components/addresses/UpdateAddress";
+
 
 
 const App = () => {
@@ -105,6 +107,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/address/new" element={<NewAddress />} />
+          <Route path="/address/:id" element={<UpdateAddress />} />
           <Route path="/address" element={<ListAddress />} />
         </Routes>
       </div>
