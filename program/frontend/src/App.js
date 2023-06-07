@@ -15,6 +15,9 @@ import EventBus from "./common/EventBus";
 import NewAddress from "./components/addresses/NewAddress";
 import ListAddress from "./components/addresses/ListAddress";
 import UpdateAddress from "./components/addresses/UpdateAddress";
+import NewContact from "./components/contact/NewContact";
+import ListContact from "./components/contact/ListContact";
+import UpdateContact from "./components/contact/UpdateContact";
 
 
 
@@ -67,6 +70,11 @@ const App = () => {
                 Addresses
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/contact"} className="nav-link">
+                Contacts
+              </Link>
+            </li>
             {commercialDirector ? (
                 <li className="nav-item">
                   <Link to={"/dashboard"} className="nav-link">
@@ -109,6 +117,9 @@ const App = () => {
           <Route path="/address/new" element={<NewAddress />} />
           <Route path="/address/:id" element={<UpdateAddress />} />
           <Route path="/address" element={<ListAddress />} />
+          <Route path="/contact/new" element={<NewContact />} />
+          <Route path="/contact/:id" element={<UpdateContact />} />
+          <Route path="/contact" element={<ListContact />} />
         </Routes>
       </div>
 

@@ -3,15 +3,17 @@ import authHeader from "./auth-header";
 
 const API_URL = "http://localhost:3000/";
 
-export const createContact = (address, postalCode, city) => {
+export const createContact = (lastName, firstName, phoneNumber, email, addressId) => {
     return axios.post(API_URL + "contact", {
-        address,
-        postalCode,
-        city
+        lastName,
+        firstName,
+        phoneNumber,
+        email,
+        addressId
     }, {headers: authHeader()})
         .then((response) => {
-            if (response.data.address) {
-                return response.data.address;
+            if (response.data.contact) {
+                return response.data.contact;
             }
         })
 }
@@ -36,11 +38,13 @@ export const getAllContacts = () => {
     })
 }
 
-export const updateContact = (contactId, contact, postalCode, city) => {
+export const updateContact = (contactId, lastName, firstName, phoneNumber, email, addressId) => {
     return axios.put(API_URL + "contact/" + contactId, {
-        contact,
-        postalCode,
-        city
+        lastName,
+        firstName,
+        phoneNumber,
+        email,
+        addressId
     }, {headers: authHeader()})
         .then((response) => {
             if (response.data.contact) {

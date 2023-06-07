@@ -20,8 +20,13 @@ const createContact = async (params) => {
     return newContact;
 }
 
+const getContacts = async () => {
+    return Contact.find();
+}
+
 module.exports = {
     getContactById,
     updateContactWithParams,
     createContact,
+    getContacts
 }

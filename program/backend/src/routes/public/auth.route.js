@@ -13,6 +13,8 @@ router.get('/address', [verifyToken], addressController.getAddresses);
 router.get('/address/:id', [verifyToken], addressController.getAddress);
 router.post('/contact', [verifyToken, validate(contactValidator.contactBody)], contactController.createContact)
 router.put('/contact/:id', [verifyToken, validate(contactValidator.contactBody)], contactController.updateContact)
+router.get('/contact', [verifyToken], contactController.getContacts);
+router.get('/contact/:id', [verifyToken], contactController.getContact);
 router.post('/visit', [verifyToken, validate(visitValidator.visitBody)], visitController.createVisit);
 router.put('/visit/:id', [verifyToken, validate(visitValidator.visitBody)], visitController.updateVisit);
 router.delete('/visit/:id', verifyToken, visitController.deleteVisit)

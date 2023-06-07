@@ -1,5 +1,4 @@
 require('express-async-errors');
-const {Address} = require("../models");
 const { addressService, contactService} = require('../services');
 const ApiError = require("../errors/ApiError");
 const httpStatus = require("http-status");
@@ -40,10 +39,22 @@ const updateContact = async (req, res) => {
     };
 
     let contactUpdated = await contactService.updateContactWithParams(contactToUpdate, params);
-    res.json({ address: contactUpdated });
+    res.json({ contact: contactUpdated });
+}
+
+const getContacts = async (req, res) => {
+    let contacts = await contactService.getContacts();
+    res.json({ contact: contacts });
+}
+
+const getContact = async (req, res) => {
+    let contact = await contactService.getContactById(req.params.id);
+    res.json({ contact: contact })
 }
 
 module.exports = {
     createContact,
-    updateContact
+    updateContact,
+    getContacts,
+    getContact
 };
