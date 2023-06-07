@@ -32,8 +32,6 @@ const createVisit = async (req, res) => {
         salesRep: req.user._id
     }
 
-
-
     let newVisit = await visitService.createVisit(params);
     res.json({visit: newVisit});
 }
