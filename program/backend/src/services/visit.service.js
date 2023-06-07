@@ -33,10 +33,24 @@ const deleteVisit = async (visit) => {
     return true;
 }
 
+const getAllVisits = async (visit) => {
+    return Visit.find()
+}
+
+const getVisitBySalesRep = async (salesRep) => {
+    try {
+        return await Visit.find({salesRep: salesRep});
+    } catch (error) {
+        return null;
+    }
+}
+
 module.exports = {
     getVisitById,
     updateVisitWithParams,
     createVisit,
     getVisitByIdAndSales,
-    deleteVisit
+    deleteVisit,
+    getAllVisits,
+    getVisitBySalesRep,
 };

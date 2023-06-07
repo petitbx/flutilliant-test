@@ -19,6 +19,7 @@ import NewContact from "./components/contact/NewContact";
 import ListContact from "./components/contact/ListContact";
 import UpdateContact from "./components/contact/UpdateContact";
 import NewVisit from "./components/visits/NewVisit";
+import ListVisit from "./components/visits/ListVisit";
 
 
 
@@ -122,6 +123,7 @@ const App = () => {
           <Route path="/contact/:id" element={<UpdateContact />} />
           <Route path="/contact" element={<ListContact />} />
           <Route path="/visit/new" element={<NewVisit />} />
+          <Route path="/visits" element={<ListVisit />} />
         </Routes>
       </div>
 

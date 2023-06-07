@@ -18,6 +18,7 @@ router.get('/contact/:id', [verifyToken], contactController.getContact);
 router.post('/visit', [verifyToken, validate(visitValidator.visitBody)], visitController.createVisit);
 router.put('/visit/:id', [verifyToken, validate(visitValidator.visitBody)], visitController.updateVisit);
 router.delete('/visit/:id', verifyToken, visitController.deleteVisit)
+router.get('/visit', verifyToken, visitController.getVisitsFiltered);
 
 
 module.exports = router;

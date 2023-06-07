@@ -30,3 +30,13 @@ export const newVisit =
             }
         })
 }
+
+export const getVisits = () => {
+    return axios.get(API_URL + "visit", {headers: authHeader()}).then(
+        (response) => {
+            if (response.data.visit) {
+                return response.data.visit;
+            }
+        }
+    )
+}

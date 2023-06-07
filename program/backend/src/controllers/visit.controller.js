@@ -83,11 +83,21 @@ const deleteVisit = async (req, res) => {
     let deleted = visitService.deleteVisit(visitToDelete);
 
     res.json({ deleted: true })
+}
 
+const getVisitsFiltered = async (req, res) => {
+    let visits = null;
+    if (req.user.role.includes('commercialDirector')) {
+        visits = await visitService.getAllVisits();
+    } else {
+        visits = await visitService.getVisitBySalesRep(req.user._id);
+    }
+    res.json({visit: visits});
 }
 
 module.exports = {
     createVisit,
     updateVisit,
-    deleteVisit
+    deleteVisit,
+    getVisitsFiltered
 }
